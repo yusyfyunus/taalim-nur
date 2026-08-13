@@ -1,0 +1,12 @@
+{
+  "name": "Taalim Nur — словарь 1 тома",
+  "short_name": "Taalim Nur",
+  "description": "Тренажёр арабских слов: 23 урока, тесты и личные трудные слова.",
+  "lang": "ru",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f1e9",
+  "theme_color": "#145d50"
+}
