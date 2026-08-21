@@ -1,4 +1,4 @@
-const CACHE_NAME = "taalim-nur-v2";
+const CACHE_NAME = "taalim-nur-v3";
 const APP_FILES = [
   "./",
   "./index.html",
