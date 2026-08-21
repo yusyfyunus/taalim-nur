@@ -17,6 +17,15 @@ const LESSONS = [
     ].map(([arabic, russian]) => ({ arabic, russian }))
   },
   {
+    id: "lesson-2",
+    title: "Урок 2",
+    summary: "6 слов в единственном числе, в порядке из учебника.",
+    words: [
+      ["ذَلِكَ", "Тот"], ["إِمَامٌ", "Имам"], ["مَا ذَاكَ؟", "Что это вон там?"],
+      ["حَجَرٌ", "Камень"], ["سُكَّرٌ", "Сахар"], ["لَبَنٌ", "Молоко, кефир"]
+    ].map(([arabic, russian]) => ({ arabic, russian }))
+  },
+  {
     id: "lesson-3",
     title: "Урок 3",
     summary: "64 слова в единственном числе, в порядке из учебника.",
@@ -596,7 +605,7 @@ reset("translate", DEFAULT_SCOPE);
 if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("./service-worker.js?v=5", { updateViaCache: "none" })
+      .register("./service-worker.js?v=6", { updateViaCache: "none" })
       .then((registration) => registration.update())
       .catch(() => {});
   });
