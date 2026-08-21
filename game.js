@@ -2,469 +2,57 @@ const LESSONS = [
   {
     id: "lesson-1",
     title: "Урок 1",
-    summary: "Указательные местоимения и базовые предметы.",
+    summary: "30 слов в единственном числе, в порядке из учебника.",
     words: [
-      { arabic: "هَذَا", russian: "Это, этот" },
-      { arabic: "هَؤُلَاءِ", russian: "Это, эти" },
-      { arabic: "مَسْجِدٌ", russian: "Мечеть", note: "جمع: مَسَاجِدُ" },
-      { arabic: "بَابٌ", russian: "Дверь", note: "جمع: أَبْوَابٌ" },
-      { arabic: "كِتَابٌ", russian: "Книга", note: "جمع: كُتُبٌ" },
-      { arabic: "قَلَمٌ", russian: "Ручка", note: "جمع: أَقْلَامٌ" },
-      { arabic: "مِفْتَاحٌ", russian: "Ключ", note: "جمع: مَفَاتِيحُ" },
-      { arabic: "مَكْتَبٌ", russian: "Письменный стол", note: "جمع: مَكَاتِبُ" },
-      { arabic: "سَرِيرٌ", russian: "Кровать", note: "جمع: أَسِرَّةٌ" },
-      { arabic: "كُرْسِيٌّ", russian: "Стул", note: "جمع: كَرَاسِيُّ" },
-      { arabic: "مَا هَذَا؟", russian: "Что это?" },
-      { arabic: "قَمِيصٌ", russian: "Рубашка", note: "جمع: قُمُصٌ / قُمصان" },
-      { arabic: "نَجْمٌ", russian: "Звезда", note: "جمع: نُجُومٌ" },
-      { arabic: "بَيْتٌ", russian: "Дом", note: "جمع: بُيُوتٌ" }
-    ]
-  },
-  {
-    id: "lesson-2",
-    title: "Урок 2",
-    summary: "Указательные формы и собирательные существительные.",
-    words: [
-      { arabic: "ذَلِكَ", russian: "То, тот" },
-      { arabic: "تِلْكَ", russian: "То, та" },
-      { arabic: "إِمَامٌ", russian: "Имам", note: "جمع: أَئِمَّةٌ" },
-      { arabic: "حَجَرٌ", russian: "Камень", note: "جمع: أَحْجَارٌ" },
-      { arabic: "سُكَّرٌ", russian: "Сахар" },
-      { arabic: "لَبَنٌ", russian: "Молоко" },
-      { arabic: "لَوْحٌ", russian: "Доска", note: "جمع: أَلْوَاحٌ" },
-      { arabic: "حَجَرَةٌ", russian: "Один камень", note: "من حَجَرٌ" },
-      { arabic: "وَرَقَةٌ", russian: "Один лист бумаги", note: "من وَرَقٌ" },
-      { arabic: "مَا ذَلِكَ؟", russian: "Что вон то?" }
-    ]
+      ["هَذَا", "Это, этот"], ["مَسْجِدٌ", "Мечеть"], ["بَابٌ", "Дверь"],
+      ["كِتَابٌ", "Книга"], ["قَلَمٌ", "Ручка"], ["مِفْتَاحٌ", "Ключ"],
+      ["مَكْتَبٌ", "Письменный стол, офис"], ["سَرِيرٌ", "Кровать"], ["كُرْسِيٌّ", "Стул"],
+      ["مَا هَذَا؟", "Что это?"], ["قَمِيصٌ", "Рубашка"], ["نَجْمٌ", "Звезда"],
+      ["بَيْتٌ", "Дом"], ["مَنْ هَذَا؟", "Кто это?"], ["وَلَدٌ", "Ребёнок, мальчик"],
+      ["رَجُلٌ", "Мужчина"], ["تَاجِرٌ", "Торговец"], ["كَلْبٌ", "Собака"],
+      ["قِطٌّ", "Кот"], ["حِمَارٌ", "Осёл"], ["حِصَانٌ", "Конь"],
+      ["جَمَلٌ", "Верблюд"], ["دِيكٌ", "Петух"], ["مِنْدِيلٌ", "Платок, салфетка"],
+      ["مُدَرِّسٌ", "Учитель"], ["طَبِيبٌ", "Врач"], ["طَالِبٌ", "Студент, ученик"],
+      ["أَ", "Ли, разве?"], ["نَعَمْ", "Да"], ["لَا", "Нет"]
+    ].map(([arabic, russian]) => ({ arabic, russian }))
   },
   {
     id: "lesson-3",
     title: "Урок 3",
-    summary: "Качества предметов и людей.",
+    summary: "73 слова в единственном числе, в порядке из учебника.",
     words: [
-      { arabic: "مَكْسُورٌ", russian: "Сломанный" },
-      { arabic: "جَالِسٌ", russian: "Сидячий" },
-      { arabic: "وَاقِفٌ", russian: "Стоячий" },
-      { arabic: "جَدِيدٌ", russian: "Новый" },
-      { arabic: "قَدِيمٌ", russian: "Старый" },
-      { arabic: "قَمَرٌ", russian: "Луна", note: "جمع: أَقْمَارٌ" },
-      { arabic: "وَسِخٌ", russian: "Грязный" },
-      { arabic: "نَظِيفٌ", russian: "Чистый" },
-      { arabic: "حَارٌّ", russian: "Горячий" },
-      { arabic: "بَارِدٌ", russian: "Холодный" },
-      { arabic: "مَفْتُوحٌ", russian: "Открытый" },
-      { arabic: "ثَقِيلٌ", russian: "Тяжёлый" },
-      { arabic: "صَغِيرٌ", russian: "Маленький" },
-      { arabic: "كَبِيرٌ", russian: "Большой" },
-      { arabic: "خَفِيفٌ", russian: "Лёгкий" },
-      { arabic: "جَمِيلٌ", russian: "Красивый" },
-      { arabic: "طَالِبٌ", russian: "Студент" },
-      { arabic: "بَعِيدٌ", russian: "Далёкий" },
-      { arabic: "حُلْوٌ", russian: "Сладкий" },
-      { arabic: "مَرِيضٌ", russian: "Больной" },
-      { arabic: "غَنِيٌّ", russian: "Богатый" },
-      { arabic: "فَقِيرٌ", russian: "Бедный" },
-      { arabic: "لَذِيذٌ", russian: "Вкусный" },
-      { arabic: "طَوِيلٌ", russian: "Длинный, высокий" },
-      { arabic: "قَصِيرٌ", russian: "Короткий, невысокий" }
-    ]
-  },
-  {
-    id: "lesson-4",
-    title: "Урок 4",
-    summary: "Дом, еда, базовые слова о быте.",
-    words: [
-      { arabic: "دُكَّانٌ", russian: "Магазин" },
-      { arabic: "تُفَّاحَةٌ", russian: "Яблоко" },
-      { arabic: "أَبٌ", russian: "Отец", note: "جمع: آبَاءٌ" },
-      { arabic: "جَنَّةٌ", russian: "Сад, рай" },
-      { arabic: "خُبْزٌ", russian: "Хлеб" },
-      { arabic: "عَيْنٌ", russian: "Глаз, родник" },
-      { arabic: "غَدَاءٌ", russian: "Обед" },
-      { arabic: "فَمٌ", russian: "Рот" },
-      { arabic: "هَوَاءٌ", russian: "Воздух" },
-      { arabic: "يَدٌ", russian: "Рука" },
-      { arabic: "ثَوْبٌ", russian: "Одежда" },
-      { arabic: "ذَهَبٌ", russian: "Золото" }
-    ]
-  },
-  {
-    id: "lesson-5",
-    title: "Урок 5",
-    summary: "Природа и люди вокруг нас.",
-    words: [
-      { arabic: "زَهْرَةٌ", russian: "Цветок" },
-      { arabic: "سَمَكٌ", russian: "Рыба" },
-      { arabic: "شَمْسٌ", russian: "Солнце" },
-      { arabic: "صَدْرٌ", russian: "Грудь" },
-      { arabic: "ضَيْفٌ", russian: "Гость" },
-      { arabic: "ظَهْرٌ", russian: "Спина" },
-      { arabic: "لَحْمٌ", russian: "Мясо" },
-      { arabic: "دَفْتَرٌ", russian: "Тетрадь" },
-      { arabic: "أَخٌ", russian: "Брат" },
-      { arabic: "رَسُولٌ", russian: "Посланник" },
-      { arabic: "وَجْهٌ", russian: "Лицо" },
-      { arabic: "صَدِيقٌ", russian: "Друг" }
-    ]
-  },
-  {
-    id: "lesson-6",
-    title: "Урок 6",
-    summary: "Молитва, время и части тела.",
-    words: [
-      { arabic: "القُرْآنُ", russian: "Коран" },
-      { arabic: "صَلَاةٌ", russian: "Молитва" },
-      { arabic: "الكَعْبَةُ", russian: "Кааба" },
-      { arabic: "رَأْسٌ", russian: "Голова" },
-      { arabic: "إِصْبَعٌ", russian: "Палец" },
-      { arabic: "ظُفْرٌ", russian: "Ноготь" },
-      { arabic: "فَجْرٌ", russian: "Утренняя заря" },
-      { arabic: "ظُهْرٌ", russian: "Полдень" },
-      { arabic: "عَصْرٌ", russian: "Послеполуденное время" },
-      { arabic: "مَغْرِبٌ", russian: "Закат, запад" },
-      { arabic: "عِشَاءٌ", russian: "Сумерки, вечер" }
-    ]
-  },
-  {
-    id: "lesson-7",
-    title: "Урок 7",
-    summary: "Вопросы, место и простые помещения.",
-    words: [
-      { arabic: "أَيْنَ؟", russian: "Где?" },
-      { arabic: "غُرْفَةٌ", russian: "Комната" },
-      { arabic: "حَمَّامٌ", russian: "Ванная" },
-      { arabic: "هُوَ", russian: "Он" },
-      { arabic: "هِيَ", russian: "Она" },
-      { arabic: "مَطْبَخٌ", russian: "Кухня" },
-      { arabic: "سَاعَةٌ", russian: "Часы" },
-      { arabic: "مَاذَا؟", russian: "Что?" },
-      { arabic: "مَدْرَسَةٌ", russian: "Школа" },
-      { arabic: "جَامِعَةٌ", russian: "Университет" },
-      { arabic: "فَصْلٌ", russian: "Класс" },
-      { arabic: "مِرْحَاضٌ", russian: "Туалет" },
-      { arabic: "سَمَاءٌ", russian: "Небо" }
-    ]
-  },
-  {
-    id: "lesson-8",
-    title: "Урок 8",
-    summary: "Откуда, движение, страны и связь с миром.",
-    words: [
-      { arabic: "مِنْ أَيْنَ؟", russian: "Откуда?" },
-      { arabic: "مُدِيرٌ", russian: "Директор" },
-      { arabic: "اليَابَانُ", russian: "Япония" },
-      { arabic: "الصِّينُ", russian: "Китай" },
-      { arabic: "الهِنْدُ", russian: "Индия" },
-      { arabic: "الفِلِبِّينُ", russian: "Филиппины" },
-      { arabic: "خَرَجَ", russian: "Вышел" },
-      { arabic: "ذَهَبَ", russian: "Ушёл, пошёл" },
-      { arabic: "سُوقٌ", russian: "Рынок" },
-      { arabic: "مَاءٌ", russian: "Вода" },
-      { arabic: "وَرَقٌ", russian: "Бумага" },
-      { arabic: "فِي", russian: "В, внутри" },
-      { arabic: "عَلَى", russian: "На" },
-      { arabic: "مِنْ", russian: "От, с, из" },
-      { arabic: "إِلَى", russian: "К, на, в" }
-    ]
-  },
-  {
-    id: "lesson-9",
-    title: "Урок 9",
-    summary: "Люди, вещи и ориентиры.",
-    words: [
-      { arabic: "رَسُولٌ", russian: "Посланник, посол" },
-      { arabic: "الكَعْبَةُ", russian: "Кааба" },
-      { arabic: "اسْمٌ", russian: "Имя" },
-      { arabic: "ابْنٌ", russian: "Сын" },
-      { arabic: "حَقِيبَةٌ", russian: "Сумка" },
-      { arabic: "عَمٌّ", russian: "Дядя" },
-      { arabic: "سَيَّارَةٌ", russian: "Машина" },
-      { arabic: "شَارِعٌ", russian: "Улица" },
-      { arabic: "مُغْلَقٌ", russian: "Закрытый" },
-      { arabic: "تَحْتَ", russian: "Под" },
-      { arabic: "هُنَاكَ", russian: "Там" }
-    ]
-  },
-  {
-    id: "lesson-10",
-    title: "Урок 10",
-    summary: "Родство, профессии и повседневные слова.",
-    words: [
-      { arabic: "مُهَنْدِسٌ", russian: "Инженер" },
-      { arabic: "أُخْتٌ", russian: "Сестра" },
-      { arabic: "أَيْضًا", russian: "Тоже" },
-      { arabic: "مِكْوَاةٌ", russian: "Утюг" },
-      { arabic: "دَرَّاجَةٌ", russian: "Велосипед" },
-      { arabic: "جِدًّا", russian: "Очень" },
-      { arabic: "مِلْعَقَةٌ", russian: "Ложка" },
-      { arabic: "قِدْرٌ", russian: "Котелок" },
-      { arabic: "بَقَرَةٌ", russian: "Корова" },
-      { arabic: "فَلَّاحٌ", russian: "Крестьянин" },
-      { arabic: "أَنْفٌ", russian: "Нос" },
-      { arabic: "أُذُنٌ", russian: "Ухо" },
-      { arabic: "فَمٌ", russian: "Рот" },
-      { arabic: "رِجْلٌ", russian: "Нога" },
-      { arabic: "دَجَاجَةٌ", russian: "Курица" },
-      { arabic: "ثَلَّاجَةٌ", russian: "Холодильник" },
-      { arabic: "شَايٌ", russian: "Чай" },
-      { arabic: "أُمٌّ", russian: "Мать" },
-      { arabic: "قَهْوَةٌ", russian: "Кофе" },
-      { arabic: "سَرِيعٌ", russian: "Быстрый" }
-    ]
-  },
-  {
-    id: "lesson-11",
-    title: "Урок 11",
-    summary: "Указательные формы женского рода и бытовая лексика.",
-    words: [
-      { arabic: "تِلْكَ", russian: "Та" },
-      { arabic: "أُولَئِكَ", russian: "Те" },
-      { arabic: "مُمَرِّضَةٌ", russian: "Медсестра" },
-      { arabic: "الهِنْدُ", russian: "Индия" },
-      { arabic: "اليَابَانُ", russian: "Япония" },
-      { arabic: "طَوِيلَةٌ", russian: "Высокая" },
-      { arabic: "بَطَّةٌ", russian: "Утка" },
-      { arabic: "بَيْضَةٌ", russian: "Яйцо" },
-      { arabic: "نَاقَةٌ", russian: "Верблюдица" },
-      { arabic: "مُؤَذِّنٌ", russian: "Муэдзин" },
-      { arabic: "سِكِّينٌ", russian: "Нож" }
-    ]
-  },
-  {
-    id: "lesson-12",
-    title: "Урок 12",
-    summary: "Положения в пространстве и страны.",
-    words: [
-      { arabic: "أَمَامَ", russian: "Перед" },
-      { arabic: "خَلْفَ", russian: "Позади" },
-      { arabic: "لِمَنْ؟", russian: "Чей? чья? чьё?" },
-      { arabic: "اليَابَانُ", russian: "Япония" },
-      { arabic: "أَمْرِيكَا", russian: "Америка" },
-      { arabic: "الصِّينُ", russian: "Китай" },
-      { arabic: "سِكِّينٌ", russian: "Нож" },
-      { arabic: "إِنْكِلْتِرَا", russian: "Англия" },
-      { arabic: "سُوِيسْرَا", russian: "Швейцария" }
-    ]
-  },
-  {
-    id: "lesson-13",
-    title: "Урок 13",
-    summary: "Фрукты, характеры и больница.",
-    words: [
-      { arabic: "فَاكِهَةٌ", russian: "Фрукт" },
-      { arabic: "عُصْفُورٌ", russian: "Воробей" },
-      { arabic: "طَائِرٌ", russian: "Птица" },
-      { arabic: "لُغَةٌ", russian: "Язык" },
-      { arabic: "سَهْلٌ", russian: "Лёгкий, доступный" },
-      { arabic: "مُجْتَهِدٌ", russian: "Старательный" },
-      { arabic: "شَهِيرٌ", russian: "Известный" },
-      { arabic: "القَاهِرَةُ", russian: "Каир" },
-      { arabic: "إِنْكِلِيزِيَّةٌ", russian: "Английский язык" },
-      { arabic: "جَائِعٌ", russian: "Голодный" },
-      { arabic: "كَسْلَانُ", russian: "Ленивый" },
-      { arabic: "عَطْشَانُ", russian: "Жаждущий" },
-      { arabic: "غَضْبَانُ", russian: "Гневный" },
-      { arabic: "مَلآنُ", russian: "Наполненный" },
-      { arabic: "اليَوْمُ", russian: "Сегодня" },
-      { arabic: "يَوْمٌ", russian: "День" },
-      { arabic: "عِنْدَ", russian: "У, при, возле" },
-      { arabic: "هُنَاكَ", russian: "Там" },
-      { arabic: "مُسْتَشْفًى", russian: "Поликлиника" },
-      { arabic: "وَزِيرٌ", russian: "Министр" },
-      { arabic: "حَادٌّ", russian: "Острый" },
-      { arabic: "إِنْدُونِيسِيَا", russian: "Индонезия" },
-      { arabic: "مَدْرَسَةٌ ثَانَوِيَّةٌ", russian: "Старшие классы" }
-    ]
-  },
-  {
-    id: "lesson-14",
-    title: "Урок 14",
-    summary: "Приветствия и высшее образование.",
-    words: [
-      { arabic: "السَّلَامُ عَلَيْكُمْ", russian: "Мир вам" },
-      { arabic: "وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ", russian: "И вам мир, милость Аллаха и Его благословение" },
-      { arabic: "كَيْفَ حَالُكَ؟", russian: "Как твои дела?" },
-      { arabic: "أَنْتُمْ", russian: "Вы" },
-      { arabic: "أَهْلًا وَسَهْلًا وَمَرْحَبًا", russian: "Добро пожаловать" },
-      { arabic: "شَفَاهُ اللَّهُ", russian: "Да исцелит его Аллах" },
-      { arabic: "الَّتِي", russian: "Которая" },
-      { arabic: "مَعَ", russian: "Вместе с" },
-      { arabic: "طَائِرَةٌ", russian: "Самолёт" },
-      { arabic: "كُلِّيَّةٌ", russian: "Факультет" },
-      { arabic: "هَنْدَسَةٌ", russian: "Инженерия" },
-      { arabic: "طِبٌّ", russian: "Медицина" },
-      { arabic: "شَرِيعَةٌ", russian: "Шариат" },
-      { arabic: "تِجَارَةٌ", russian: "Торговля" },
-      { arabic: "نَصْرَانِيٌّ", russian: "Христианин" },
-      { arabic: "دُكْتُورٌ", russian: "Доктор" },
-      { arabic: "حَدِيقَةٌ", russian: "Сад" },
-      { arabic: "حَفِيدٌ", russian: "Внук" }
-    ]
-  },
-  {
-    id: "lesson-15",
-    title: "Урок 15",
-    summary: "Время, дни и простые связки.",
-    words: [
-      { arabic: "دِينٌ", russian: "Религия" },
-      { arabic: "رَبٌّ", russian: "Господь" },
-      { arabic: "شَارِعٌ", russian: "Улица" },
-      { arabic: "أَيٌّ", russian: "Какой?" },
-      { arabic: "مَحْكَمَةٌ", russian: "Суд" },
-      { arabic: "السَّبْتُ", russian: "Суббота" },
-      { arabic: "شَهْرٌ", russian: "Месяц" },
-      { arabic: "بَلَدٌ", russian: "Страна, город" },
-      { arabic: "إِحْدَاهُمَا", russian: "Одна из них" },
-      { arabic: "مَتَى؟", russian: "Когда?" },
-      { arabic: "قَبْلَ", russian: "До, прежде" },
-      { arabic: "أُسْبُوعٌ", russian: "Неделя" },
-      { arabic: "اخْتِبَارٌ", russian: "Экзамен" },
-      { arabic: "رُجُوعٌ", russian: "Возвращение" },
-      { arabic: "كَيْفَ؟", russian: "Как?" },
-      { arabic: "أَذَانٌ", russian: "Призыв на молитву" },
-      { arabic: "صَلَاةٌ", russian: "Молитва" }
-    ]
-  },
-  {
-    id: "lesson-16",
-    title: "Урок 16",
-    summary: "Дом и вещи вокруг дома.",
-    words: [
-      { arabic: "قَلَمٌ", russian: "Письменная ручка" },
-      { arabic: "دَفْتَرٌ", russian: "Тетрадь" },
-      { arabic: "بِلْجِيكَا", russian: "Бельгия" },
-      { arabic: "بَيْتٌ", russian: "Дом" },
-      { arabic: "دَرْسٌ", russian: "Урок" },
-      { arabic: "بَابٌ", russian: "Дверь" },
-      { arabic: "نَهْرٌ", russian: "Река" },
-      { arabic: "جَبَلٌ", russian: "Гора" },
-      { arabic: "كَلْبٌ", russian: "Собака" },
-      { arabic: "بَحْرٌ", russian: "Море" },
-      { arabic: "حِمَارٌ", russian: "Осёл" },
-      { arabic: "سَرِيرٌ", russian: "Кровать" },
-      { arabic: "مَكْتَبَةٌ", russian: "Библиотека" },
-      { arabic: "فُنْدُقٌ", russian: "Гостиница" },
-      { arabic: "سَاعَةٌ", russian: "Часы" },
-      { arabic: "سَيَّارَةٌ", russian: "Машина" }
-    ]
-  },
-  {
-    id: "lesson-17",
-    title: "Урок 17",
-    summary: "Компании, цена и простые вещи.",
-    words: [
-      { arabic: "شَرِكَةٌ", russian: "Компания, агентство" },
-      { arabic: "رَخِيصٌ", russian: "Недорогой" },
-      { arabic: "حِمَارٌ", russian: "Осёл" },
-      { arabic: "قَمِيصٌ", russian: "Рубашка" }
-    ]
-  },
-  {
-    id: "lesson-18",
-    title: "Урок 18",
-    summary: "Количество, праздники и меры времени.",
-    words: [
-      { arabic: "كَمْ؟", russian: "Сколько?" },
-      { arabic: "عَجَلَةٌ", russian: "Колесо" },
-      { arabic: "عِيدٌ", russian: "Праздник" },
-      { arabic: "سَنَةٌ", russian: "Год" },
-      { arabic: "عِيدُ الفِطْرِ", russian: "Праздник разговения" },
-      { arabic: "عِيدُ الأَضْحَى", russian: "Праздник жертвоприношения" },
-      { arabic: "مَتْجَرٌ", russian: "Магазин" },
-      { arabic: "حَيٌّ", russian: "Квартал, микрорайон" },
-      { arabic: "مِسْطَرَةٌ", russian: "Линейка" },
-      { arabic: "رِيَالٌ", russian: "Риал" },
-      { arabic: "رَكْعَةٌ", russian: "Ракаат" }
-    ]
-  },
-  {
-    id: "lesson-19",
-    title: "Урок 19",
-    summary: "Числа, расстояния и некоторые предметы.",
-    words: [
-      { arabic: "مُخْتَلِفٌ", russian: "Разный" },
-      { arabic: "ثَمَنٌ", russian: "Цена" },
-      { arabic: "ثَلَاثَةٌ", russian: "Три" },
-      { arabic: "أَرْبَعَةٌ", russian: "Четыре" },
-      { arabic: "خَمْسَةٌ", russian: "Пять" },
-      { arabic: "سِتَّةٌ", russian: "Шесть" },
-      { arabic: "سَبْعَةٌ", russian: "Семь" },
-      { arabic: "ثَمَانِيَةٌ", russian: "Восемь" },
-      { arabic: "تِسْعَةٌ", russian: "Девять" },
-      { arabic: "عَشَرَةٌ", russian: "Десять" },
-      { arabic: "أُورُوبَّا", russian: "Европа" },
-      { arabic: "نِصْفٌ", russian: "Половина" },
-      { arabic: "قِرْشٌ", russian: "Мелкая монета" },
-      { arabic: "حَافِلَةٌ", russian: "Автобус" },
-      { arabic: "رَاكِبٌ", russian: "Пассажир" },
-      { arabic: "سُؤَالٌ", russian: "Вопрос" },
-      { arabic: "جَيْبٌ", russian: "Карман" },
-      { arabic: "يَوْمٌ", russian: "День" },
-      { arabic: "قَدِيمٌ", russian: "Давний" },
-      { arabic: "بَلَدٌ", russian: "Страна" }
-    ]
-  },
-  {
-    id: "lesson-20",
-    title: "Урок 20",
-    summary: "Слово, журнал и буква.",
-    words: [
-      { arabic: "غُرْفَةٌ", russian: "Комната" },
-      { arabic: "كَلِمَةٌ", russian: "Слово" },
-      { arabic: "مَجَلَّةٌ", russian: "Журнал" },
-      { arabic: "حَرْفٌ", russian: "Буква" }
-    ]
-  },
-  {
-    id: "lesson-21",
-    title: "Урок 21",
-    summary: "Окно, библиотека и качества.",
-    words: [
-      { arabic: "نَافِذَةٌ", russian: "Окно" },
-      { arabic: "مَكْتَبَةٌ", russian: "Библиотека" },
-      { arabic: "كُرْسِيٌّ", russian: "Стул, трон" },
-      { arabic: "لَوْنٌ", russian: "Цвет" },
-      { arabic: "صَالِحٌ", russian: "Праведный, хороший" },
-      { arabic: "وَاسِعٌ", russian: "Широкий, просторный" },
-      { arabic: "غَانَا", russian: "Гана" },
-      { arabic: "نِيجِيرِيَا", russian: "Нигерия" },
-      { arabic: "كَثِيرٌ", russian: "Обильный, многочисленный" },
-      { arabic: "لَكِنْ", russian: "Но, однако" }
-    ]
-  },
-  {
-    id: "lesson-22",
-    title: "Урок 22",
-    summary: "Цвета и количество.",
-    words: [
-      { arabic: "أَزْرَقُ", russian: "Синий" },
-      { arabic: "أَسْوَدُ", russian: "Чёрный" },
-      { arabic: "أَصْفَرُ", russian: "Жёлтый" },
-      { arabic: "أَحْمَرُ", russian: "Красный" },
-      { arabic: "أَبْيَضُ", russian: "Белый" },
-      { arabic: "أَخْضَرُ", russian: "Зелёный" },
-      { arabic: "قَلِيلٌ", russian: "Мало" },
-      { arabic: "كَثِيرٌ", russian: "Много" },
-      { arabic: "فِنْجَانٌ", russian: "Чашка" }
-    ]
-  },
-  {
-    id: "lesson-23",
-    title: "Урок 23",
-    summary: "Минуты, города и заключительные слова.",
-    words: [
-      { arabic: "دَقِيقَةٌ", russian: "Минута" },
-      { arabic: "أَخْضَرُ", russian: "Зелёный" },
-      { arabic: "أَحْمَرُ", russian: "Красный" },
-      { arabic: "بَاكِسْتَانُ", russian: "Пакистан" },
-      { arabic: "مَكَّةُ", russian: "Мекка" },
-      { arabic: "مَتَى؟", russian: "Когда?" },
-      { arabic: "جِدَّةُ", russian: "Джидда" }
-    ]
+      ["مَكْسُورٌ", "Сломанный"], ["مَفْتُوحٌ", "Открытый"], ["جَالِسٌ", "Сидящий"],
+      ["وَاقِفٌ", "Стоящий"], ["جَدِيدٌ", "Новый"], ["قَدِيمٌ", "Старый"],
+      ["بَارِدٌ", "Холодный"], ["حَارٌّ", "Горячий"], ["نَظِيفٌ", "Чистый"],
+      ["وَسِخٌ", "Грязный"], ["قَمَرٌ", "Луна"], ["قَرِيبٌ", "Близкий, родной"],
+      ["بَعِيدٌ", "Далёкий"], ["ثَقِيلٌ", "Тяжёлый"], ["خَفِيفٌ", "Лёгкий"],
+      ["صَغِيرٌ", "Маленький"], ["كَبِيرٌ", "Большой"], ["جَمِيلٌ", "Красивый"],
+      ["وَرَقٌ", "Бумага"], ["مَاءٌ", "Вода"], ["مُهَنْدِسٌ", "Инженер"],
+      ["حُلْوٌ", "Сладкий"], ["لَذِيذٌ", "Вкусный"], ["دَفْتَرٌ", "Тетрадь"],
+      ["دُكَّانٌ", "Магазин"], ["تُفَّاحَةٌ", "Яблоко"], ["مَرِيضٌ", "Больной"],
+      ["غَنِيٌّ", "Богатый"], ["فَقِيرٌ", "Бедный"], ["طَوِيلٌ", "Высокий, длинный"],
+      ["قَصِيرٌ", "Короткий"], ["أَبٌ", "Отец"], ["جَنَّةٌ", "Рай, сад"],
+      ["خُبْزٌ", "Хлеб"], ["عَيْنٌ", "Глаз, родник, сам"], ["غَدَاءٌ", "Обед"],
+      ["فَمٌ", "Рот"], ["هَوَاءٌ", "Воздух"], ["يَدٌ", "Рука"],
+      ["ثَوْبٌ", "Одежда"], ["ذَهَبٌ", "Золото"], ["زَهْرَةٌ", "Цветок"],
+      ["سَمَكٌ", "Рыба"], ["شَمْسٌ", "Солнце"], ["صَدْرٌ", "Грудь"],
+      ["ضَيْفٌ", "Гость"], ["ظَهْرٌ", "Спина"], ["لَحْمٌ", "Мясо"],
+      ["أَخٌ", "Брат"], ["رَسُولٌ", "Посланник, посол"],
+      ["وَجْهٌ", "Лицо, способ, сторона, вид, причина"], ["صَدِيقٌ", "Друг"],
+      ["الْقُرْآنُ", "Коран"], ["صَلَاةٌ", "Молитва, намаз"], ["كَعْبَةٌ", "Кааба"],
+      ["رَأْسٌ", "Голова"], ["إِصْبَعٌ", "Палец"], ["صَابُونٌ", "Мыло"],
+      ["ظُفْرٌ", "Ноготь"], ["فَجْرٌ", "Рассвет"], ["ظُهْرٌ", "Полдень"],
+      ["عَصْرٌ", "Предвечернее время"], ["مَغْرِبٌ", "Закат, запад"], ["عِشَاءٌ", "Вечернее время"],
+      ["كَافِرٌ", "Неверующий"], ["عَبَدَ", "Поклоняться"], ["عَابِدٌ", "Поклоняющийся"],
+      ["أَنَا", "Я"], ["دِينٌ", "Религия"], ["أَعْطَى", "Давать"],
+      ["نَحَرَ", "Резать, закалывать"], ["شَنَأَ", "Ненавидеть"], ["أَبْتَرُ", "Урезанный, куцый"]
+    ].map(([arabic, russian]) => ({ arabic, russian }))
   }
 ];
 
-const STORAGE_KEY = "med-course-hard-words";
+
+const STORAGE_KEY = "med-course-hard-words-v7";
+const DEFAULT_SCOPE = LESSONS[0]?.id || "all";
 const ALL_WORDS = LESSONS.flatMap((lesson) => lesson.words.map((word, index) => ({
   ...word,
   lessonId: lesson.id,
@@ -502,7 +90,7 @@ const shuffle = (values) => {
 
 const state = {
   mode: "translate",
-  scope: "lesson-1",
+  scope: DEFAULT_SCOPE,
   deck: [],
   index: 0,
   score: 0,
@@ -533,7 +121,7 @@ function activeWords() {
 }
 
 function lessonScopeFromChoice() {
-  return $("lesson-number")?.value || "lesson-1";
+  return $("lesson-number")?.value || DEFAULT_SCOPE;
 }
 
 function populateLessonSelector() {
@@ -543,12 +131,6 @@ function populateLessonSelector() {
 }
 
 function buildDeck(words) {
-  if (state.scope === "hard") {
-    return shuffle(words.flatMap((word) => [
-      { ...word, task: "translate" },
-      { ...word, task: "spell" }
-    ]));
-  }
   return shuffle(words).map((word) => ({ ...word, task: state.mode }));
 }
 
@@ -579,13 +161,23 @@ function setButtons() {
   $("lesson-number").value = LESSONS.some((lesson) => lesson.id === state.scope) ? state.scope : lessonChoice;
   $("scope-lesson-group").classList.toggle("active", state.scope.startsWith("lesson-"));
   const currentLesson = LESSONS.find((lesson) => lesson.id === $("lesson-number").value) || LESSONS[0];
-  $("scope-lesson-group").querySelector("strong").textContent = currentLesson ? currentLesson.title : "Урок 1";
+  $("scope-lesson-group").querySelector("strong").textContent = currentLesson ? currentLesson.title : "Уроков пока нет";
   $("scope-all").classList.toggle("active", state.scope === "all");
   $("scope-hard").classList.toggle("active", state.scope === "hard");
   $("mode-translate").parentElement.hidden = state.scope === "hard";
 }
 
 function renderPreview() {
+  if (!LESSONS.length) {
+    $("question-block").innerHTML = `
+      <div class="lesson-preview empty-lessons">
+        <p class="eyebrow">Список очищен</p>
+        <h2>Уроков и слов пока нет</h2>
+        <p class="preview-intro">Игра готова к новому списку. После добавления слов здесь снова появятся уроки и тесты.</p>
+      </div>`;
+    return;
+  }
+
   const lessons = state.scope === "all"
     ? LESSONS
     : LESSONS.filter((lesson) => lesson.id === state.scope);
@@ -876,7 +468,7 @@ function renderLessonDeck() {
 
   if (state.scope === "hard") {
     const current = state.deck[state.index];
-    current.task === "translate" ? renderTranslate(current) : renderSpell(current);
+    state.mode === "translate" ? renderTranslate(current) : renderSpell(current);
     return;
   }
 
@@ -913,7 +505,7 @@ function renderWordList() {
         `).join("")}
       </div>
     </section>
-  `).join("") || `<p class="preview-intro">Ничего не найдено. Попробуй другой запрос.</p>`;
+  `).join("") || `<p class="preview-intro">Слов пока нет.</p>`;
 
   document.querySelectorAll(".hard-toggle").forEach((input) => input.addEventListener("change", () => {
     input.checked ? state.hardWordIds.add(input.dataset.uid) : state.hardWordIds.delete(input.dataset.uid);
@@ -1002,7 +594,7 @@ function render() {
 }
 
 saveHardWords();
-reset("translate", "lesson-1");
+reset("translate", DEFAULT_SCOPE);
 
 if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
   window.addEventListener("load", () => {
