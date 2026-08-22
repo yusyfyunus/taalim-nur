@@ -1,9 +1,9 @@
-const CACHE_NAME = "taalim-nur-v9";
+const CACHE_NAME = "taalim-nur-v10";
 const APP_FILES = [
   "./",
   "./index.html",
-  "./style.css?v=9",
-  "./game.js?v=9",
+  "./style.css?v=10",
+  "./game.js?v=10",
   "./privacy.html",
   "./manifest.webmanifest",
   "./og.png"
