@@ -515,6 +515,7 @@ a { color: inherit; }
 .start-test-button,
 .result-restart,
 .start-hard-test,
+.reveal-answers,
 .check-button,
 .hint-button {
   border: 0;
@@ -533,6 +534,16 @@ a { color: inherit; }
   color: white;
   font-size: 15px;
   box-shadow: 0 16px 34px rgba(220, 139, 63, 0.28);
+}
+
+.reveal-answers {
+  width: min(330px, 100%);
+  margin: 0 auto 18px;
+  padding: 14px 22px;
+  display: block;
+  background: linear-gradient(135deg, var(--amber), #e6ab52);
+  color: white;
+  box-shadow: 0 12px 28px rgba(220, 139, 63, 0.24);
 }
 
 .prompt {
@@ -598,6 +609,20 @@ a { color: inherit; }
   color: var(--forest-dark);
   font-size: 12px;
   font-weight: 800;
+}
+
+.answer-option.arabic-option {
+  min-height: 72px;
+  padding-right: 18px;
+  text-align: right;
+}
+
+.answer-option.arabic-option b {
+  color: var(--forest-dark);
+  font-family: "Geeza Pro", "Noto Naskh Arabic", serif;
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.55;
 }
 
 .answer-option.right,

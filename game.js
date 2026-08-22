@@ -170,7 +170,13 @@ function populateLessonSelector() {
 }
 
 function buildDeck(words) {
-  return shuffle(words).map((word) => ({ ...word, task: state.mode }));
+  if (state.mode === "translate") {
+    return shuffle([
+      ...words.map((word) => ({ ...word, task: "ar-ru" })),
+      ...words.map((word) => ({ ...word, task: "ru-ar-choice" }))
+    ]);
+  }
+  return shuffle(words).map((word) => ({ ...word, task: "spell" }));
 }
 
 function saveHardWords() {
@@ -331,13 +337,53 @@ function renderTranslate(current) {
   $("question-block").innerHTML = `
     <p class="prompt">Выбери правильный перевод</p>
     <div class="arabic-word" dir="rtl" lang="ar">${current.arabic}</div>
-    <div class="answer-grid">
+    <button class="reveal-answers" id="reveal-word-answers">Показать варианты ответов</button>
+    <div class="answer-grid" id="word-answer-grid" hidden>
       ${options.map((word, i) => `
         <button class="answer-option" data-answer="${word.uid}">
           <span>${i + 1}</span>${word.russian}
         </button>
       `).join("")}
     </div>`;
+
+  $("reveal-word-answers").addEventListener("click", () => {
+    $("reveal-word-answers").hidden = true;
+    $("word-answer-grid").hidden = false;
+  });
+
+  document.querySelectorAll(".answer-option").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (state.answered) return;
+      const correct = button.dataset.answer === current.uid;
+      document.querySelectorAll(".answer-option").forEach((option) => {
+        option.disabled = true;
+        if (option.dataset.answer === current.uid) option.classList.add("right");
+      });
+      if (!correct) button.classList.add("wrong");
+      grade(correct);
+    });
+  });
+}
+
+function renderArabicChoice(current) {
+  const pool = state.scope === "hard" ? ALL_WORDS : activeWords();
+  const options = shuffle([current, ...shuffle(pool.filter((word) => word.uid !== current.uid)).slice(0, 3)]);
+  $("question-block").innerHTML = `
+    <p class="prompt">Выбери арабское слово</p>
+    <div class="russian-word">${current.russian}</div>
+    <button class="reveal-answers" id="reveal-word-answers">Показать варианты ответов</button>
+    <div class="answer-grid" id="word-answer-grid" hidden>
+      ${options.map((word, i) => `
+        <button class="answer-option arabic-option" data-answer="${word.uid}">
+          <span>${i + 1}</span><b dir="rtl" lang="ar">${word.arabic}</b>
+        </button>
+      `).join("")}
+    </div>`;
+
+  $("reveal-word-answers").addEventListener("click", () => {
+    $("reveal-word-answers").hidden = true;
+    $("word-answer-grid").hidden = false;
+  });
 
   document.querySelectorAll(".answer-option").forEach((button) => {
     button.addEventListener("click", () => {
@@ -426,7 +472,7 @@ function renderHardSelector() {
     <div class="hard-selector">
       <p class="eyebrow">Свой набор для повторения</p>
       <h2>Выбери трудные слова</h2>
-      <p class="preview-intro">Каждое выбранное слово встретится в смешанном тесте. Выбирай всё, что хочется добить до автоматизма.</p>
+      <p class="preview-intro">Каждое выбранное слово встретится два раза: арабский → русский и русский → арабский.</p>
       <div class="hard-tools">
         <button type="button" id="select-all-hard">Выбрать все</button>
         <button type="button" id="clear-hard">Очистить</button>
@@ -505,14 +551,12 @@ function renderLessonDeck() {
     return;
   }
 
-  if (state.scope === "hard") {
-    const current = state.deck[state.index];
-    state.mode === "translate" ? renderTranslate(current) : renderSpell(current);
-    return;
-  }
-
   const current = state.deck[state.index];
-  state.mode === "translate" ? renderTranslate(current) : renderSpell(current);
+  if (state.mode === "translate") {
+    current.task === "ru-ar-choice" ? renderArabicChoice(current) : renderTranslate(current);
+  } else {
+    renderSpell(current);
+  }
 }
 
 function renderWordList() {
@@ -553,7 +597,7 @@ function renderWordList() {
 }
 
 function reset(nextMode = state.mode, nextScope = state.scope) {
-  state.mode = nextMode;
+  state.mode = nextScope === "hard" ? "translate" : nextMode;
   state.scope = nextScope;
   state.deck = nextScope === "hard" ? [] : buildDeck(activeWords());
   state.index = 0;
@@ -638,7 +682,7 @@ reset("translate", DEFAULT_SCOPE);
 if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("./service-worker.js?v=8", { updateViaCache: "none" })
+      .register("./service-worker.js?v=9", { updateViaCache: "none" })
       .then((registration) => registration.update())
       .catch(() => {});
   });
