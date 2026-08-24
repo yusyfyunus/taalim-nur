@@ -146,6 +146,44 @@ const WORDS_BY_LESSON = LESSONS.reduce((acc, lesson) => {
 }, {});
 
 const $ = (id) => document.getElementById(id);
+let answerAudioContext = null;
+
+function playAnswerSound(correct) {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) return;
+
+  try {
+    answerAudioContext ||= new AudioContextClass();
+    const play = () => {
+      const now = answerAudioContext.currentTime;
+      const notes = correct ? [523.25, 659.25, 783.99] : [220, 174.61];
+
+      notes.forEach((frequency, noteIndex) => {
+        const start = now + noteIndex * (correct ? 0.075 : 0.11);
+        const duration = correct ? 0.2 : 0.24;
+        const oscillator = answerAudioContext.createOscillator();
+        const gain = answerAudioContext.createGain();
+
+        oscillator.type = correct ? "sine" : "triangle";
+        oscillator.frequency.setValueAtTime(frequency, start);
+        gain.gain.setValueAtTime(0.0001, start);
+        gain.gain.exponentialRampToValueAtTime(correct ? 0.12 : 0.1, start + 0.018);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+        oscillator.connect(gain);
+        gain.connect(answerAudioContext.destination);
+        oscillator.start(start);
+        oscillator.stop(start + duration + 0.02);
+      });
+    };
+
+    if (answerAudioContext.state === "suspended") {
+      answerAudioContext.resume().then(play).catch(() => {});
+    } else {
+      play();
+    }
+  } catch (_) {}
+}
+
 const stripMarks = (value) => value
   .normalize("NFKD")
   .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g, "")
@@ -352,6 +390,7 @@ function feedback(correct, current) {
 function grade(correct) {
   if (state.answered) return;
   state.answered = true;
+  playAnswerSound(correct);
   const current = state.deck[state.index];
   if (correct) {
     state.score += 1;
@@ -717,7 +756,7 @@ reset("translate", DEFAULT_SCOPE);
 if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("./service-worker.js?v=10", { updateViaCache: "none" })
+      .register("./service-worker.js?v=11", { updateViaCache: "none" })
       .then((registration) => registration.update())
       .catch(() => {});
   });
